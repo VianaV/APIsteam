@@ -1,0 +1,32 @@
+quarkus:
+  health:
+    openapi:
+      included: true
+  smallrye-health:
+    root-path: /health
+  swagger-ui:
+    path: /docs
+  smallrye-openapi:
+    info-title: Steam Dashboard API
+    path: /openapi
+
+br:
+  com:
+    steamdash:
+      restClients:
+        services:
+
+          ProfileRestService/mp-rest/url: ${URL_API_STEAM}/ISteamUser/GetPlayerSummaries/v0002/
+          InfoGameRestService/mp-rest/url: http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002
+          JogosRecentesRestService/mp-rest/url: http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/
+          UserAchievementsRestService/mp-rest/url: http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/
+          GetOwnedGamesRestService/mp-rest/url: http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/
+          GetSteamLevelRestService/mp-rest/url: https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/
+          SteamIdRestService/mp-rest/url: ${URL_API_STEAM}/ISteamUser/ResolveVanityURL/v0001/
+          ListaAmigosRestService/mp-rest/url: ${URL_API_STEAM}/ISteamUser/GetFriendList/v0001/
+
+config:
+  api-key-steam: ${API_KEY_STEAM}
+  # oidc:
+  #   auth-server-url: https://steamcommunity.com/openid/
+  #   token:
